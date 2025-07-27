@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById("addBtn").addEventListener("click", addNote);
   console.log('My Notepad JS loaded and DOM ready');
+
 
   // === Multi-User Login/Register Handling ===
   const authContainer = document.getElementById('auth-container');
