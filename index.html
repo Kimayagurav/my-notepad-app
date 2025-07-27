@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Notepad</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- LOGIN/REGISTER SCREEN -->
+  <div id="auth-container" class="auth-box">
+    <div class="login-card">
+      <img src="logo.png" alt="My Notepad Logo" class="logo-img" />
+      <div class="brand">
+        <span class="brand-title">My Notepad</span>
+      </div>
+      <div class="brand-tagline">Your happy place for little thoughts!</div>
+      <input type="text" id="username" placeholder="Username" class="login-input" autocomplete="username" />
+      <input type="password" id="password" placeholder="Password" class="login-input" autocomplete="current-password" />
+      <button id="login-btn" class="login-btn">Login</button>
+      <button id="register-btn" class="register-btn">Register</button>
+      <p id="auth-message" class="login-error"></p>
+      <div class="login-footer">Your notes are securely stored in this browser.</div>
+    </div>
+  </div>
+  <!-- APP BODY (HIDDEN INITIALLY) -->
+  <div style="display:none" id="app-body">
+    <div class="topbar">
+      <div class="brand">
+        <img src="logo.png" alt="My Notepad Logo" class="logo-img" />
+        <span class="brand-title">My Notepad</span>
+      </div>
+      <div class="brand-tagline">Your happy place for little thoughts!</div>
+      <input type="text" id="search-bar" placeholder="Search notes..." />
+      <span id="user-info" style="font-weight:bold; margin-right: 14px;"></span>
+      <button id="logout-btn">Log out</button>
+    </div>
+    <div class="main-layout">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <label for="sort-filter">Sort By:</label>
+          <select id="sort-filter">
+            <option value="latest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="title-asc">Title (A-Z)</option>
+            <option value="title-desc">Title (Z-A)</option>
+          </select>
+        </div>
+        <button id="export-btn">Export</button>
+        <input type="file" id="import-input" style="display:none;">
+        <button id="import-btn">Import</button>
+        <h2>Saved Notes</h2>
+        <ul id="notes-list"></ul>
+      </aside>
+      <main class="note-main">
+        <input type="text" id="note-title" placeholder="Note Title" />
+        <textarea id="note-input" placeholder="Type your note here..."></textarea>
+        <input type="file" id="file-input" accept="image/*,.pdf,.txt" />
+        <div id="image-preview"></div>
+        <button id="save-btn">Save Note</button>
+      </main>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
