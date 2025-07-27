@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('My Notepad JS loaded and DOM ready');
+
   // ======= Multi-User Login/Register Handling =======
   const authContainer = document.getElementById('auth-container');
   const appBody = document.getElementById('app-body');
@@ -27,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.removeItem("currentUser");
   }
 
-  loginBtn.onclick = function () {
+  loginBtn.addEventListener('click', function () {
     const uname = usernameEl.value.trim();
     const pwd = passwordEl.value;
     if (!uname || !pwd) {
@@ -45,9 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     setCurrentUser(uname);
     showApp();
-  };
+  });
 
-  registerBtn.onclick = function () {
+  registerBtn.addEventListener('click', function () {
     const uname = usernameEl.value.trim();
     const pwd = passwordEl.value;
     if (!uname || !pwd) {
@@ -63,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     saveUsers(users);
     setCurrentUser(uname);
     showApp();
-  };
+  });
 
   function showAuth() {
     authContainer.style.display = "flex";
@@ -83,10 +85,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (getCurrentUser()) showApp();
   else showAuth();
 
-  logoutBtn.onclick = function () {
+  logoutBtn.addEventListener('click', function () {
     logoutUser();
     showAuth();
-  };
+  });
 
   // ======= Notes Logic (per user) =======
   const noteTitle = document.getElementById('note-title');
@@ -127,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
     saveBtn.textContent = 'Save Note';
   }
 
-  fileInput.onchange = function () {
+  fileInput.addEventListener('change', function () {
     const file = fileInput.files[0];
     currentAttachment = null;
     imagePreview.innerHTML = '';
@@ -151,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     };
     reader.readAsDataURL(file);
-  };
+  });
 
   function renderNotes() {
     if (!getCurrentUser()) return;
@@ -214,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const editBtn = document.createElement('button');
       editBtn.textContent = '✎';
       editBtn.className = 'edit-btn';
-      editBtn.onclick = () => {
+      editBtn.addEventListener('click', function() {
         noteTitle.value = note.title;
         noteInput.value = note.content;
         saveBtn.textContent = 'Update Note';
@@ -230,12 +232,12 @@ document.addEventListener('DOMContentLoaded', function() {
           currentAttachment = null;
           imagePreview.innerHTML = '';
         }
-      };
+      });
 
       const deleteBtn = document.createElement('button');
       deleteBtn.textContent = '×';
       deleteBtn.className = 'delete-btn';
-      deleteBtn.onclick = () => {
+      deleteBtn.addEventListener('click', function() {
         const deleteIdx = notes.indexOf(note);
         notes.splice(deleteIdx, 1);
         saveNotes();
@@ -243,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
           resetNoteInput();
         }
         renderNotes();
-      };
+      });
 
       li.appendChild(titleSpan);
       li.appendChild(contentSpan);
@@ -255,10 +257,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  saveBtn.onclick = () => {
+  saveBtn.addEventListener('click', function() {
     const title = noteTitle.value.trim();
     const content = noteInput.value.trim();
-    loadNotes(); // <-- THIS IS THE FIX! Ensures new notes are added to the latest list, not stale.
+    loadNotes(); // Always load most recent notes!
     if (content && getCurrentUser()) {
       if (editIndex === -1) {
         notes.push({
@@ -279,12 +281,12 @@ document.addEventListener('DOMContentLoaded', function() {
       resetNoteInput();
       renderNotes();
     }
-  };
+  });
 
-  searchBar.oninput = renderNotes;
-  sortFilter.onchange = renderNotes;
+  searchBar.addEventListener('input', renderNotes);
+  sortFilter.addEventListener('change', renderNotes);
 
-  exportBtn.onclick = function () {
+  exportBtn.addEventListener('click', function() {
     loadNotes();
     const data = JSON.stringify(notes, null, 2);
     const blob = new Blob([data], {type: "application/json"});
@@ -296,13 +298,13 @@ document.addEventListener('DOMContentLoaded', function() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
-  };
+  });
 
-  importBtn.onclick = function () {
+  importBtn.addEventListener('click', function() {
     importInput.value = '';
     importInput.click();
-  };
-  importInput.onchange = function (e) {
+  });
+  importInput.addEventListener('change', function (e) {
     const file = e.target.files[0];
     if (!file) return;
     const reader = new FileReader();
@@ -323,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     };
     reader.readAsText(file);
-  };
+  });
 
   if (getCurrentUser()) renderNotes();
 });

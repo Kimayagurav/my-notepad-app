@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>My Notepad</title>
-  <meta name="viewport"
-  content="width=device-width,
-  initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- LOGIN/REGISTER SCREEN -->
   <div id="auth-container" class="auth-box">
     <div class="login-card">
       <img src="logo.png" alt="My Notepad Logo" class="logo-img" />
@@ -16,14 +15,15 @@
         <span class="brand-title">My Notepad</span>
       </div>
       <div class="brand-tagline">Your happy place for little thoughts!</div>
-      <input type="text" id="username" placeholder="Username" class="login-input" autocomplete="username" />
-      <input type="password" id="password" placeholder="Password" class="login-input" autocomplete="current-password" />
+      <input type="text" id="username" placeholder="Username" class="login-input" autocomplete="off" autocapitalize="none" />
+      <input type="password" id="password" placeholder="Password" class="login-input" autocomplete="off" />
       <button id="login-btn" class="login-btn">Login</button>
       <button id="register-btn" class="register-btn">Register</button>
       <p id="auth-message" class="login-error"></p>
       <div class="login-footer">Your notes are securely stored in this browser.</div>
     </div>
   </div>
+  <!-- APP BODY (HIDDEN INITIALLY) -->
   <div style="display:none" id="app-body">
     <div class="topbar">
       <div class="brand">
@@ -33,7 +33,7 @@
       <div class="brand-tagline">Your happy place for little thoughts!</div>
       <input type="text" id="search-bar" placeholder="Search notes..." />
       <span id="user-info" style="font-weight:bold; margin-right: 14px;"></span>
-      <button id="logout-btn">Log out</button>
+      <button id="logout-btn" type="button">Log out</button>
     </div>
     <div class="main-layout">
       <aside class="sidebar">
