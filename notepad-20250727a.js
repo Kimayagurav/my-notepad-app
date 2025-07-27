@@ -327,4 +327,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   if (getCurrentUser()) renderNotes();
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
 });
