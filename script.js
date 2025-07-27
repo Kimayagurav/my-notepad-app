@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   console.log('My Notepad JS loaded and DOM ready');
 
-  // ======= Multi-User Login/Register Handling =======
+  // === Multi-User Login/Register Handling ===
   const authContainer = document.getElementById('auth-container');
   const appBody = document.getElementById('app-body');
   const usernameEl = document.getElementById('username');
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const userInfo = document.getElementById('user-info');
   const logoutBtn = document.getElementById('logout-btn');
 
-  // User management helpers
   function getUsers() {
     return JSON.parse(localStorage.getItem("users") || "{}");
   }
@@ -90,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     showAuth();
   });
 
-  // ======= Notes Logic (per user) =======
+  // === Notes Logic (per user) ===
   const noteTitle = document.getElementById('note-title');
   const noteInput = document.getElementById('note-input');
   const fileInput = document.getElementById('file-input');
@@ -159,7 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!getCurrentUser()) return;
     loadNotes();
     let filteredNotes = [...notes];
-
     const searchTerm = searchBar.value && searchBar.value.trim().toLowerCase();
     if (searchTerm) {
       filteredNotes = filteredNotes.filter(note =>
@@ -260,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
   saveBtn.addEventListener('click', function() {
     const title = noteTitle.value.trim();
     const content = noteInput.value.trim();
-    loadNotes(); // Always load most recent notes!
+    loadNotes();
     if (content && getCurrentUser()) {
       if (editIndex === -1) {
         notes.push({
