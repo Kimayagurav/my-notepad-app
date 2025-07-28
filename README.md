@@ -19,10 +19,12 @@ A secure, modern, multi-user notes app that works perfectly on desktop & mobile.
 ## 📱 Screenshots
 
 ### Desktop View
-![Desktop Screenshot](1000163778.jpg)
+![Desktop Screenshot]<img width="1366" height="768" alt="1000163778" src="https://github.com/user-attachments/assets/a755b7d6-326b-4a3b-8d21-8a0c0f8d4d84" />
+
 
 ### Mobile View
-![Mobile Screenshot](1000163855.png)
+![Mobile Screenshot]![1000163855](https://github.com/user-attachments/assets/60726e0d-e368-4462-94ec-d80b480f6dbd)
+
 
 ---
 
